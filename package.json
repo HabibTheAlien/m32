@@ -8,6 +8,9 @@
 		"mongoose": "^7.0.5",
 		"nodemon": "^2.0.22"
 	},
+	"engines": {
+		"node": ">=14 <15"
+	},
 	"name": "m32",
 	"version": "1.0.0",
 	"main": "index.js",
