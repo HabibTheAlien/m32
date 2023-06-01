@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/user");
+const postRoute = require("./routes/posts");
 const mongoose = require("mongoose");
 
 dotenv.config();
@@ -17,8 +18,6 @@ mongoose
 	.connect(process.env.MONGO_URL, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
-		// useCreateIndex: true,
-		// useFindAndModify: true,
 	})
 	.then(() => console.log("MongoDB successfully connected !!!"))
 	.catch((err) => {
@@ -27,11 +26,12 @@ mongoose
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
+app.use("/api/posts", postRoute);
 
 //HOME PAGE RESPONSE
 app.get("/", (req, res) => {
 	res.send(
-		"<div><h1 >Hello world</h1><h2>Hello I am STAT 16th app server </h2></div>"
+		"<div><h1 >Hello world</h1><h2>Hello I am Sweet 16th app server </h2></div>"
 	);
 });
 
@@ -42,5 +42,7 @@ app.use((req, res) => {
 
 //CREATING THE BACKEND SERVER
 app.listen(PORT, () => {
-	console.log(`Backend server is successfully running at${PORT}`);
+	console.log(
+		`Backend server is successfully running at http://localhost:${PORT}`
+	);
 });
